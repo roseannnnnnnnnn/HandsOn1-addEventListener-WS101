@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            background-color: black;
+            gap: 45px;
+        }
+
+        button {
+            position: relative;
+            text-decoration: none;
+            color: white;
+            background: whitesmoke;
+            text-transform: uppercase;
+            font-size: 1.5em;
+            letter-spacing: 0.1em;
+            font-weight: 300;
+            padding: 10px 30px;
+            transition: 0.5s;
+        }
+
+        button:hover {
+            background: black;
+            color: #fff;
+            border-radius: 40px;
+            letter-spacing: 0.25em;
+            box-shadow: 0 0 35px bisque;
+        }
+
+        button:before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: black;
+            border-radius: 40px;
+        }
+
+        button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        button i {
+            position: absolute;
+            inset: 0;
+            display: block;
+        }
+
+        button i::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 80px;
+            width: 10px;
+            height: 4px;
+            background: black;
+            transform: translateX(-50%) skewX(325deg);
+            transition: 0.5s;
+        }
+
+        button:hover i::before {
+            width: 20px;
+            left: 20px;
+        }
+
+        button i::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 80px;
+            width: 10px;
+            height: 4px;
+            background: black;
+            transform: translateX(-50%) skewX(325deg);
+            transition: 0.5s;
+        }
+
+        button:hover i::after {
+            width: 20px;
+            left: 80px;
+        }
+
+        @media (max-width: 600px) {
+            button {
+                font-size: 0.8em;
+                padding: 0.4em 1em;
+            }
+        }
+
+        h1 {
+            font-size: 55px;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript addEventListener() Hands-on.</h1>
+    <button id="btn1" style="background: black;"><span>Button 1</span><i></i></button>
+    <button id="btn2" style="background: black;"><span>Button 2</span><i></i></button>
+    <button id="btn3" style="background:  black;"><span>Button 3</span><i></i></button>
+
+    <script>
+        document.getElementById("btn1").addEventListener("click", btn1function);
+        document.getElementById("btn2").addEventListener("click", btn2function);
+        document.getElementById("btn3").addEventListener("click", btn3function);
+
+        function btn1function() {
+            alert(" Button 1 was clicked!");
+        }
+
+        function btn2function() {
+            alert(" Button 2 was clicked!");
+        }
+
+        function btn3function() {
+            alert(" Button 3 was clicked!");
+        }
+
+        function openTransparentAlert(message) {
+            Swal.fire({
+                title: 'Cool!',
+                text: message,
+                icon: 'success',
+                background: 'rgba(0, 0, 0, 0.4)',
+                showConfirmButton: false,
+                customClass: {
+                    container: 'transparent-alert-container'
+                }
+            });
+        }
+    </script>
+</body>
+</html>
